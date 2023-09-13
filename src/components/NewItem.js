@@ -19,6 +19,8 @@ const NewItem = () => {
         e.preventDefault()
         console.log(data)
         dispatch(createData(data))
+        console.log("IMG DATA")
+        console.log(data.selectedFile   )
     }
   return (
     <div>
