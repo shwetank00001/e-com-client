@@ -1,0 +1,39 @@
+/* Home.css */
+
+/* Container styles */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #f0f0f0;
+    padding: 20px;
+  }
+  
+  /* Heading styles */
+  .home-heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* Divider styles */
+  .divider {
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+  }
+  
+  /* Subsection styles */
+  .subsection {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  /* Discord-like card styles */
+  .discord-card {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
