@@ -28,4 +28,14 @@
     max-width: 100%;
     height: auto;
   }
+
+  .product-button{
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid black;
+    margin-top: 10px;
+    cursor: pointer;
+  }
   

@@ -18,12 +18,13 @@ const Products = () => {
     showData()
   }, [])
 
-  const elements = data.map(function (item) {
+  const ele = data.map(function (item) {
     return (
       <div key={item.id} className="product-item">
         <h4 className="product-title">{item.title}</h4>
         <p className="product-description">{item.description}</p>
         <img src={item.selectedFile} alt={item.title} className="product-image" />
+        <button className='product-button'>Add to cart</button>
       </div>
     );
   });
@@ -31,7 +32,7 @@ const Products = () => {
   return (
     <div className="products-container">
       <h2>The Products are</h2>
-      {elements}
+      {ele}
     </div>
   );
 };
