@@ -9,8 +9,6 @@ const Cart = () => {
             <h4>Data img</h4>
             <h4>Data name</h4>
             <h4>Data desc</h4>
-
-            <button>Home page</button>
         </div>
     </div>
   )
