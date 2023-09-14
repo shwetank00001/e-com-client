@@ -1,47 +1,39 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-
+import './Products.css' 
 
 const Products = () => {
+  const [data, setData] = useState([]);
 
-
-  const [ data, setData] = React.useState([])
-  const newData = Object.keys(data)
-
-  async function showData(){
+  async function showData() {
     try {
-      const result = axios.get('http://localhost:5000/items')
-      setData(result)
+      const result = await axios.get('http://localhost:5000/items')
+      setData(result.data)
     } catch (error) {
       console.log(error)
     }
   }
 
-
-  function show(){
-    console.log(typeof(newData))
-  }
-  React.useEffect(() => {
+  useEffect(() => {
     showData()
   }, [])
 
-  // const ele = data.map(function(item){
-  //   return(
-  //     <div key={item.id}>
-  //       <h4>{item.title}</h4>
-  //       <h4>{item.description}</h4>
-  //       <h4>{item.selectedFile}</h4>
-  //     </div>
-  //   )
-  // })
+  const elements = data.map(function (item) {
+    return (
+      <div key={item.id} className="product-item">
+        <h4 className="product-title">{item.title}</h4>
+        <p className="product-description">{item.description}</p>
+        <img src={item.selectedFile} alt={item.title} className="product-image" />
+      </div>
+    );
+  });
 
   return (
-    <div>
+    <div className="products-container">
       <h2>The Products are</h2>
-      {/* {ele} */}
-      <button onClick={show}>click</button>
+      {elements}
     </div>
-  )
-}
+  );
+};
 
-export default Products
+export default Products;
