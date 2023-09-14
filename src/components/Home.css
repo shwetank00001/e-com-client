@@ -1,6 +1,4 @@
-/* Home.css */
 
-/* Container styles */
 .home-container {
     display: flex;
     flex-direction: column;
@@ -8,27 +6,25 @@
     padding: 20px;
   }
   
-  /* Heading styles */
   .home-heading {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
   }
   
-  /* Divider styles */
+
   .divider {
     border-top: 1px solid #ccc;
     margin: 20px 0;
   }
   
-  /* Subsection styles */
+
   .subsection {
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
   }
   
-  /* Discord-like card styles */
   .discord-card {
     background-color: #fff;
     border-radius: 5px;
