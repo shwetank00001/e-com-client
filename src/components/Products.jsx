@@ -1,36 +1,71 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import './Products.css' 
+import { useDispatch } from 'react-redux'
+import { add } from '../reducer/cartSlice';
+
 
 const Products = () => {
+
+
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  const dispatch = useDispatch()
 
   async function showData() {
     try {
       const result = await axios.get('http://localhost:5000/items')
       setData(result.data)
     } catch (error) {
+      setError(error)
       console.log(error)
-    }
+      setLoading(false)
+    } 
   }
 
   useEffect(() => {
     showData()
   }, [])
 
+  // if(loading){
+  //   return <div>Loading data...........</div>
+  // }
+
+
+  if(error){
+    return <div>{error.message}</div>
+  }
+
+
+  async function handleAddToCart(item) {
+    try {
+
+      await axios.post('http://localhost:5000/cart/add', {
+        productId: item._id,
+        quantity: 1,
+      });
+      dispatch(add(item));
+    } catch (error) {
+      console.error('Error adding item to cart:', error);
+    }
+  }
+
   const ele = data.map(function (item) {
     return (
-      <div key={item.id} className="product-item">
+      <div key={item._id} className="product-item">
         <h4 className="product-title">{item.title}</h4>
         <p className="product-description">{item.description}</p>
         <img src={item.selectedFile} alt={item.title} className="product-image" />
-        <button className='product-button'>Add to cart</button>
+        <button onClick={() => handleAddToCart(item)} className='product-button'>Add to cart</button>
+        <h4>{item._id}</h4>
       </div>
     );
   });
 
   return (
-    <div className="products-container">
+   <div className="products-container">
       <h2>The Products are</h2>
       {ele}
     </div>
