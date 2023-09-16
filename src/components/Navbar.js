@@ -15,7 +15,7 @@ const Navbar = () => {
       <Link to={'/cart'} className="navbar-button">
         <button>Cart</button>
       </Link>
-      <h4 className='cart-count'>Cart: {count}</h4>
+      <h4 className='cart-count'>Cart: {count.length}</h4>
     </div>
   );
 };

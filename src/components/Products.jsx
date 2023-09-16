@@ -35,6 +35,7 @@ const Products = () => {
 
   function handleAddToCart(item) {
     dispatch(add(item));
+    console.log(item)
   }
 
  async function handleDelete(item){
@@ -51,8 +52,8 @@ const Products = () => {
         <h4 className="product-title">{item.title}</h4>
         <p className="product-description">{item.description}</p>
         <img src={item.selectedFile} alt={item.title} className="product-image" />
-        
-        <button onClick={() => handleAddToCart(item)} className='product-button'>Add to cart</button>
+
+        <button onClick={() => handleAddToCart(JSON.stringify(item))} className='product-button'>Add to cart</button>
 
         <button onClick={() => handleDelete(item)}>Delete Product</button>
 

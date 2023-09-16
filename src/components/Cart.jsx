@@ -7,11 +7,14 @@ const Cart = () => {
   const dispatch = useDispatch()
   const products = useSelector((state) => state.cart)
 
+  console.log(products)
+
   function handleRemove(_id){
     dispatch(remove(_id))
   }
 
   const ele = products.map(function(item){
+    console.log("Item being mapped:", item);
     return(
       <div key={item._id}>
         <h3>{item.title}</h3>
@@ -21,11 +24,14 @@ const Cart = () => {
       </div>
     )
   })
+
+  console.log("Rendering Cart component")
   return (
     <div>
         <h3>The cart item is</h3>
-          {ele}
+          
         <div>
+          {ele}
         </div>
     </div>
   )
