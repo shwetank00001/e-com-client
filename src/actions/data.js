@@ -18,3 +18,14 @@ export const createData = (newPost) => async(dispatch) => {
         console.log(error)
     }
 }
+
+
+export const deleteData = (id) => async(dispatch) => {
+    try {
+        await api.deleteData(id)
+        dispatch({type: "DELETE", payload:id})
+        
+    } catch (error) {
+        
+    }
+}

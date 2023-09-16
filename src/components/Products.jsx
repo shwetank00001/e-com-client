@@ -9,7 +9,6 @@ const Products = () => {
 
 
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
   const dispatch = useDispatch()
@@ -21,7 +20,6 @@ const Products = () => {
     } catch (error) {
       setError(error)
       console.log(error)
-      setLoading(false)
     } 
   }
 
@@ -29,36 +27,35 @@ const Products = () => {
     showData()
   }, [])
 
-  // if(loading){
-  //   return <div>Loading data...........</div>
-  // }
-
 
   if(error){
     return <div>{error.message}</div>
   }
 
 
-  async function handleAddToCart(item) {
-    try {
-
-      await axios.post('http://localhost:5000/cart/add', {
-        productId: item._id,
-        quantity: 1,
-      });
-      dispatch(add(item));
-    } catch (error) {
-      console.error('Error adding item to cart:', error);
-    }
+  function handleAddToCart(item) {
+    dispatch(add(item));
   }
 
+ async function handleDelete(item){
+    try {
+      await fetch(`http://localhost:5000/items/${item._id}`
+      ,{method: "DELETE"})
+    } catch (error) {
+      
+    }
+  }
   const ele = data.map(function (item) {
     return (
       <div key={item._id} className="product-item">
         <h4 className="product-title">{item.title}</h4>
         <p className="product-description">{item.description}</p>
         <img src={item.selectedFile} alt={item.title} className="product-image" />
+        
         <button onClick={() => handleAddToCart(item)} className='product-button'>Add to cart</button>
+
+        <button onClick={() => handleDelete(item)}>Delete Product</button>
+
         <h4>{item._id}</h4>
       </div>
     );

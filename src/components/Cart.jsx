@@ -5,13 +5,13 @@ import { remove } from '../reducer/cartSlice'
 const Cart = () => {
 
   const dispatch = useDispatch()
-  const cartItems = useSelector((state) => state.cart)
+  const products = useSelector((state) => state.cart)
 
   function handleRemove(_id){
     dispatch(remove(_id))
   }
 
-  const ele = cartItems.map(function(item, index){
+  const ele = products.map(function(item){
     return(
       <div key={item._id}>
         <h3>{item.title}</h3>
@@ -24,7 +24,7 @@ const Cart = () => {
   return (
     <div>
         <h3>The cart item is</h3>
-        {ele}
+          {ele}
         <div>
         </div>
     </div>

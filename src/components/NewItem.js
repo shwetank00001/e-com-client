@@ -25,12 +25,13 @@ const NewItem = () => {
       <form className="new-item-form" onSubmit={handleSubmit}>
 
         <label className="new-item-label">Title</label>
-        <input className="new-item-input" type="text" placeholder="Add item title" value={data.title} onChange={(e) => setData({ ...data, title: e.target.value })} />
+        <input className="new-item-input" type="text" required placeholder="Add item title" value={data.title} onChange={(e) => setData({ ...data, title: e.target.value })} />
         
         <label className="new-item-label">Description</label>
         <input
           className="new-item-input"
           type="text"
+          required
           placeholder="Add item description"
           value={data.description}
           onChange={(e) => setData({ ...data, description: e.target.value })}
@@ -39,6 +40,7 @@ const NewItem = () => {
         <div className="new-item-file-input">
           <FileBase
             type="file"
+            
             multiple={false}
             onDone={({ base64 }) => setData({ ...data, selectedFile: base64 })}
           />
